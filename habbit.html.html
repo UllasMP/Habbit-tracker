@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Habit Tracker</title>
+
+<style>
+:root{
+    --grad1:#0f2027;
+    --grad2:#203a43;
+    --grad3:#2c5364;
+    --card:#ffffff10;
+    --border:#ffffff25;
+    --text:#f5f7fa;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:Segoe UI,Roboto,Arial}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--grad1),var(--grad2),var(--grad3));
+    color:var(--text);
+    padding:40px 20px 60px;
+}
+
+header{
+    text-align:center;
+    margin-bottom:40px;
+    animation:fadeDown .8s ease;
+}
+
+header h1{
+    font-size:clamp(28px,5vw,48px);
+    letter-spacing:1px;
+    font-weight:700;
+}
+
+header p{
+    opacity:.85;
+    margin-top:10px;
+    font-size:clamp(14px,2vw,18px);
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:18px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 10px 35px rgba(0,0,0,.35);
+    transition:.35s ease;
+    position:relative;
+    overflow:hidden;
+    animation:fadeUp .7s ease forwards;
+}
+
+.card:hover{
+    transform:translateY(-6px) scale(1.01);
+    box-shadow:0 20px 50px rgba(0,0,0,.55);
+}
+
+.card-title{
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.open-btn{
+    font-size:12px;
+    padding:6px 12px;
+    border-radius:999px;
+    background:#ffffff20;
+    border:1px solid #ffffff30;
+    cursor:pointer;
+    transition:.25s;
+}
+.open-btn:hover{background:#ffffff35}
+
+iframe{
+    width:100%;
+    height:500px;
+    border:none;
+    border-radius:14px;
+    background:white;
+}
+
+.placeholder{
+    height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    opacity:.75;
+    border-radius:14px;
+    border:1px dashed #ffffff40;
+}
+
+footer{
+    text-align:center;
+    margin-top:50px;
+    opacity:.7;
+    font-size:14px;
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeDown{
+    from{opacity:0;transform:translateY(-20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>My Habit Tracker</h1>
+    <p>Track consistency. Build discipline. Improve daily.</p>
+</header>
+
+<section class="container">
+
+    <!-- FEB -->
+    <div class="card" data-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vT8RxBTsiS36d1tpZVSYcbJms58g8VL8b2p0tBLKsv4GGvmJKo3dHnqndpRM_76XN5pbkEnGEE21eLn/pubhtml?gid=0">
+        <div class="card-title">February <button class="open-btn">Open Document</button></div>
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT8RxBTsiS36d1tpZVSYcbJms58g8VL8b2p0tBLKsv4GGvmJKo3dHnqndpRM_76XN5pbkEnGEE21eLn/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+    </div>
+
+    <!-- MARCH -->
+    <div class="card" data-url="#">
+        <div class="card-title">March <button class="open-btn">Open Document</button></div>
+        <div class="placeholder">Document will be available soon</div>
+    </div>
+
+    <!-- APRIL -->
+    <div class="card" data-url="#">
+        <div class="card-title">April <button class="open-btn">Open Document</button></div>
+        <div class="placeholder">Document will be available soon</div>
+    </div>
+
+</section>
+
+<footer>
+    Designed for continuous self improvement ✨
+</footer>
+
+<script>
+document.querySelectorAll('.card').forEach(card=>{
+    card.querySelector('.open-btn').addEventListener('click',()=>{
+        const url=card.dataset.url;
+        if(url && url !== '#') window.open(url,'_blank');
+        else alert('Document not uploaded yet');
+    })
+})
+</script>
+
+</body>
+</html>
