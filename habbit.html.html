@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -13,6 +13,8 @@
     --card:#ffffff10;
     --border:#ffffff25;
     --text:#f5f7fa;
+    --muted:#d5dde7cc;
+    --accent:#5ec4ff;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:Segoe UI,Roboto,Arial}
@@ -43,35 +45,39 @@ header p{
 }
 
 .container{
-    max-width:1400px;
+    max-width:980px;
     margin:auto;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
 }
 
 .card{
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:22px;
-    padding:18px;
+    border-radius:18px;
+    padding:16px;
     backdrop-filter:blur(14px);
     box-shadow:0 10px 35px rgba(0,0,0,.35);
     transition:.35s ease;
     position:relative;
     overflow:hidden;
     animation:fadeUp .7s ease forwards;
+    min-height:210px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
 .card:hover{
-    transform:translateY(-6px) scale(1.01);
+    transform:translateY(-4px) scale(1.01);
     box-shadow:0 20px 50px rgba(0,0,0,.55);
 }
 
 .card-title{
-    font-size:22px;
+    font-size:20px;
     font-weight:600;
-    margin-bottom:12px;
+    margin-bottom:8px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -79,32 +85,56 @@ header p{
 
 .open-btn{
     font-size:12px;
-    padding:6px 12px;
+    padding:7px 12px;
     border-radius:999px;
-    background:#ffffff20;
-    border:1px solid #ffffff30;
+    background:linear-gradient(90deg,#3ea2ff,#69d2ff);
+    color:#072133;
+    font-weight:600;
+    border:1px solid #7ad8ff80;
     cursor:pointer;
     transition:.25s;
 }
-.open-btn:hover{background:#ffffff35}
+.open-btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
 
-iframe{
-    width:100%;
-    height:500px;
-    border:none;
-    border-radius:14px;
-    background:white;
+.card-content{
+    margin-top:6px;
 }
 
-.placeholder{
-    height:500px;
+.meta{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:10px;
+}
+
+.stats{
+    list-style:none;
+    display:grid;
+    gap:8px;
+}
+
+.stats li{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    opacity:.75;
-    border-radius:14px;
-    border:1px dashed #ffffff40;
+    justify-content:space-between;
+    font-size:13px;
+    padding:8px 10px;
+    border:1px solid #ffffff24;
+    border-radius:10px;
+    background:#ffffff0f;
+}
+
+.status{
+    display:inline-block;
+    align-self:flex-start;
+    margin-top:10px;
+    padding:5px 10px;
+    border-radius:999px;
+    font-size:11px;
+    letter-spacing:.3px;
+    text-transform:uppercase;
+    border:1px solid #8de2ff66;
+    color:#bcecff;
+    background:#51b9ff1f;
 }
 
 footer{
@@ -137,26 +167,53 @@ footer{
 
     <!-- FEB -->
     <div class="card" data-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vT8RxBTsiS36d1tpZVSYcbJms58g8VL8b2p0tBLKsv4GGvmJKo3dHnqndpRM_76XN5pbkEnGEE21eLn/pubhtml?gid=0">
-        <div class="card-title">February <button class="open-btn">Open Document</button></div>
-        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT8RxBTsiS36d1tpZVSYcbJms58g8VL8b2p0tBLKsv4GGvmJKo3dHnqndpRM_76XN5pbkEnGEE21eLn/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+        <div>
+            <div class="card-title">February <button class="open-btn">Details</button></div>
+            <div class="card-content">
+                <p class="meta">Structured monthly tracker with daily completion checkmarks and consistency review.</p>
+                <ul class="stats">
+                    <li><span>Habits Tracked</span><strong>6</strong></li>
+                    <li><span>Completion Focus</span><strong>80%+</strong></li>
+                </ul>
+            </div>
+        </div>
+        <span class="status">Live Sheet</span>
     </div>
 
     <!-- MARCH -->
-    <div class="card" data-url="#">
-        <div class="card-title">March <button class="open-btn">Open Document</button></div>
-        <div class="placeholder">Document will be available soon</div>
+    <div class="card" data-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhpIJNPnN_kFaktFLPQX6ovL_-fcQwwl2RyJldL9vmK44E5tRFz9v_1CMV2aBRkuVWUQbJaj4VW4qi/pubhtml?gid=0&single=true">
+        <div>
+            <div class="card-title">March <button class="open-btn">Details</button></div>
+            <div class="card-content">
+                <p class="meta">Template prepared for performance tracking and weekly discipline snapshots.</p>
+                <ul class="stats">
+                    <li><span>Habits Planned</span><strong>7</strong></li>
+                    <li><span>Review Cycle</span><strong>Weekly</strong></li>
+                </ul>
+            </div>
+        </div>
+        <span class="status">Live Sheet</span>
     </div>
 
     <!-- APRIL -->
     <div class="card" data-url="#">
-        <div class="card-title">April <button class="open-btn">Open Document</button></div>
-        <div class="placeholder">Document will be available soon</div>
+        <div>
+            <div class="card-title">April <button class="open-btn">Details</button></div>
+            <div class="card-content">
+                <p class="meta">Quarter reset board for stronger routine stability and long-term consistency.</p>
+                <ul class="stats">
+                    <li><span>Primary Goal</span><strong>Consistency</strong></li>
+                    <li><span>Progress View</span><strong>Monthly</strong></li>
+                </ul>
+            </div>
+        </div>
+        <span class="status">Upcoming</span>
     </div>
 
 </section>
 
 <footer>
-    Designed for continuous self improvement ✨
+    Designed for continuous self improvement
 </footer>
 
 <script>
